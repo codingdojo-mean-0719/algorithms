@@ -28,6 +28,22 @@ class Node {
         }
         return this.value;
     }
+
+    size(){
+        var counter = 1;
+        if(this.left){
+            counter += this.left.size();
+        }
+        if(this.right){
+            counter += this.right.size();
+        }
+        return counter
+       // return (this.left.size() + 1 + this.right.size())
+    }
+
+    size2(){
+        return (this.left ? this.left.size() : 0) + (this.right ? this.right.size() : 0) + 1;
+    }
 }
 
 class Tree {
@@ -68,6 +84,14 @@ class Tree {
         }
         return this.root.min2();
     }
+
+    size(){
+        if(this.isEmpty()){
+            return 0;
+        } else {
+            return this.root.size()
+        }
+    }
 }
 
 
@@ -77,5 +101,5 @@ for(var i = 0; i < testArr.length; i++){
     tree.add(testArr[i]);
 }
 console.log(tree)
-console.log(tree.min2())
+console.log(tree.size())
   
