@@ -42,6 +42,30 @@ class SList{
         }
         
     }
+    //SList: Reverse
+    //Reverse the node sequence. Given an SList object, the .head property should 
+    //point to the previously-last node, and the rest of the nodes should follow 
+    //similarly from back to front.
+    reverse(){
+        var runner = this.head;
+        var previousNode= null;
+        var stop=0;
+        while(runner){
+            var nextNode= runner.next;
+            runner.next = previousNode;
+            previousNode = runner;
+           
+            if(stop++ == 5){
+                console.log("broke");
+                break;
+            }
+            runner = nextNode;
+            //console.log(runner)
+        }
+        this.head = previousNode;
+        //console.log("reverse running");
+        //node has to point previouse neighbord
+    }
 }
 const list = new SList();
 console.log(list);
@@ -49,12 +73,15 @@ list.add(2);
 console.log(list);
 list.add(3);
 list.add(4); //new head
-console.log(list);
-console.log(list.contains(3));
-console.log(list.contains(4));
-console.log(list.contains(2));
-console.log(list.contains(5));
 console.log(list.printing());
+console.log(list.reverse());
+
+console.log(list.printing());
+
+
+// console.log(list.contains(2));
+// console.log(list.contains(5));
+// console.log(list.printing());
 
 //---------THIS IS WHAT WE GOT IN OUR TERMNAL----------------------------
 //SList { head: null }
