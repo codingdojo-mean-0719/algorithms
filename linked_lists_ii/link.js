@@ -66,31 +66,54 @@ class SList{
         //console.log("reverse running");
         //node has to point previouse neighbord
     }
+  knthLast(k){
+    //k = number = place
+    //if(runner.next *k == null)
+    if(k<0){
+        return null
+    }
+
+
+
+    var runner = this.head;
+    let followingNode = runner;
+    let longRunner = runner;
+
+    while(k > 0 && runner != null){
+        runner = runner.next;
+       k --
+    }
+    if(k>0){
+        return null
+    }
+    longRunner = runner;
+    while(longRunner!=null ){
+        longRunner = longRunner.next;
+        followingNode = followingNode.next; 
+    }
+    
+    return followingNode.val
+
+
+    // while(runner != null){
+    //     listArray.push(runner.val);
+    //     runner = runner.next;
+
+    // }
+    // return listArray[k-1];
+    
+}
 }
 const list = new SList();
-console.log(list);
+
 list.add(2);
-console.log(list);
+
 list.add(3);
-list.add(4); //new head
+list.add(4);
 console.log(list.printing());
-console.log(list.reverse());
-
-console.log(list.printing());
+console.log(list.knthLast(-2));
 
 
-// console.log(list.contains(2));
-// console.log(list.contains(5));
-// console.log(list.printing());
 
-//---------THIS IS WHAT WE GOT IN OUR TERMNAL----------------------------
-//SList { head: null }
-// SList { head: Node { val: 2, next: null } }
-// SList { head: Node { val: 4, next: Node { val: 3, next: [Node] } } }
-// true
-// true
-// true
-// false
-// 4
-// 3
-// 2
+
+
