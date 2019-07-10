@@ -29,6 +29,13 @@ class Node {
         return this.value;
     }
 
+    max(){
+        if(this.right){
+            return this.right.max()
+        }
+        return this.value;
+    }
+
     size(){
         var counter = 1;
         if(this.left){
@@ -43,6 +50,23 @@ class Node {
 
     size2(){
         return (this.left ? this.left.size() : 0) + (this.right ? this.right.size() : 0) + 1;
+    }
+
+    contains(value){
+        if(this.value === value){
+            return true
+        }
+        if(value < this.value){
+            if(this.left){
+                return this.left.contains(value)
+            }
+        }
+        else{
+            if(this.right){
+                return this.right.contains(value)
+            } 
+        }
+        return false
     }
 }
 
@@ -85,12 +109,27 @@ class Tree {
         return this.root.min2();
     }
 
+    max(){
+        if(this.isEmpty()){
+            return null;
+        }
+        return this.root.max();
+    }
+
     size(){
         if(this.isEmpty()){
             return 0;
         } else {
             return this.root.size()
         }
+    }
+
+    contains(value){
+        console.log("value", value)
+        if(this.isEmpty()){
+            return false;
+        }
+        return this.root.contains(value)
     }
 }
 
@@ -101,5 +140,5 @@ for(var i = 0; i < testArr.length; i++){
     tree.add(testArr[i]);
 }
 console.log(tree)
-console.log(tree.size())
+console.log(tree.max())
   
