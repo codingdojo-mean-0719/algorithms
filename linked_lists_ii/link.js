@@ -158,21 +158,9 @@ console.log(list.palindrome());
 // console.log(list.printing());
 // console.log(list.reverse());
 
-// console.log(list.printing());
 
 
-// console.log(list.contains(2));
-// console.log(list.contains(5));
-// console.log(list.printing());
 
-//---------THIS IS WHAT WE GOT IN OUR TERMNAL----------------------------
-//SList { head: null }
-// SList { head: Node { val: 2, next: null } }
-// SList { head: Node { val: 4, next: Node { val: 3, next: [Node] } } }
-// true
-// true
-// true
-// false
-// 4
-// 3
-// 2
+
+
+
