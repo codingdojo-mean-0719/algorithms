@@ -40,8 +40,40 @@ class SList{
             runner=runner.next;
             
         }
-        
     }
+
+        fromLast(k){
+            //k = number = place
+            //if(runner.next *k == null)
+            if(k<0){
+                return null;
+            }
+            var runner = this.head;
+            let followingNode = runner;
+            let longRunner = runner;
+        
+            while(k > 0 && runner != null){
+                runner = runner.next;
+                k --;
+            }
+            if(k>0){
+                return null;
+            }
+            longRunner = runner;
+            while(longRunner!=null ){
+                longRunner = longRunner.next;
+                followingNode = followingNode.next; 
+            }
+        
+            return followingNode.val;
+            // while(runner != null){
+            //     listArray.push(runner.val);
+            //     runner = runner.next;
+        
+            // }
+            // return listArray[k-1];
+        }
+        
     //SList: Reverse
     //Reverse the node sequence. Given an SList object, the .head property should 
     //point to the previously-last node, and the rest of the nodes should follow 
@@ -66,53 +98,67 @@ class SList{
         //console.log("reverse running");
         //node has to point previouse neighbord
     }
-  knthLast(k){
-    //k = number = place
-    //if(runner.next *k == null)
-    if(k<0){
-        return null
-    }
-
-
-
-    var runner = this.head;
-    let followingNode = runner;
-    let longRunner = runner;
-
-    while(k > 0 && runner != null){
-        runner = runner.next;
-       k --
-    }
-    if(k>0){
-        return null
-    }
-    longRunner = runner;
-    while(longRunner!=null ){
-        longRunner = longRunner.next;
-        followingNode = followingNode.next; 
-    }
+    //Return whether a list is a palindrome. String palindromes read the same front-to-back and back-to-front. Here, compare node values . N.B.: to be 
+    //accurate in JavaScript, use === instead of == , since 1 == true == [1] == "1" .
+    //racecar, ana
+    palindrome(){
+        var pal1="";
+        var pal2="";
+        var runner= this.head;
     
-    return followingNode.val
+        while(runner != null){
+            pal1 += runner.val;
+            runner = runner.next;   
+        }
+        console.log("This is pal1", pal1);
+        for(var i = pal1.length-1; i>=0; i--){
+            pal2 += pal1[i];
+        }
+        console.log("End FOR loop", pal2);
+        return(pal1 === pal2);
+          
+    }
+    pal2(){
+        var length=this.length();
+        var runner = this.head;
+        
+        while(runner !=null){
+            var opIndx = this.fromLast(length);
+            length -=1;
+            console.log("this is opIndx", typeof(opIndx))
+            if(!(runner.val === opIndx)){
+                return false;
+            }
+            console.log("this is runner.val", runner.val)
+            runner =runner.next;
+        }
+        return true;
 
-
-    // while(runner != null){
-    //     listArray.push(runner.val);
-    //     runner = runner.next;
-
-    // }
-    // return listArray[k-1];
+    }
+    length(){
+        var length=0;
+        var runner= this.head;
     
-}
+        while(runner != null){
+            length += 1;
+            runner = runner.next;   
+        }
+        return length;
 
+    }
 }
 const list = new SList();
+console.log(list);
+list.add('2');
+console.log(list);
+list.add(1);
+list.add(3); //new head
+console.log(list.pal2());
+console.log(list.palindrome());
+// console.log(list.printing());
+// console.log(list.reverse());
 
-list.add(2);
 
-list.add(3);
-list.add(4);
-console.log(list.printing());
-console.log(list.knthLast(-2));
 
 
 
