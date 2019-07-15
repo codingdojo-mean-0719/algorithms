@@ -103,6 +103,7 @@ class SList{
     // return listArray[k-1];
     
 }
+
 }
 const list = new SList();
 
