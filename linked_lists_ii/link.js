@@ -34,46 +34,41 @@ class SList{
     printing(){
         //printing the current values
         var runner =this.head;
-        
         while(runner){
             console.log(runner.val);// we're console here to grab the val
-            runner=runner.next;
-            
+            runner=runner.next;  
         }
     }
 
-        fromLast(k){
-            //k = number = place
-            //if(runner.next *k == null)
-            if(k<0){
-                return null;
-            }
-            var runner = this.head;
-            let followingNode = runner;
-            let longRunner = runner;
-        
-            while(k > 0 && runner != null){
-                runner = runner.next;
-                k --;
-            }
-            if(k>0){
-                return null;
-            }
-            longRunner = runner;
-            while(longRunner!=null ){
-                longRunner = longRunner.next;
-                followingNode = followingNode.next; 
-            }
-        
-            return followingNode.val;
-            // while(runner != null){
-            //     listArray.push(runner.val);
-            //     runner = runner.next;
-        
-            // }
-            // return listArray[k-1];
+    fromLast(k){
+        //k = number = place
+        //if(runner.next *k == null)
+        if(k<0){
+            return null;
         }
-        
+        var runner = this.head;
+        let followingNode = runner;
+        let longRunner = runner;
+    
+        while(k > 0 && runner != null){
+            runner = runner.next;
+            k --;
+        }
+        if(k>0){
+            return null;
+        }
+        longRunner = runner;
+        while(longRunner!=null ){
+            longRunner = longRunner.next;
+            followingNode = followingNode.next; 
+        }
+        return followingNode.val;
+        // while(runner != null){
+        //     listArray.push(runner.val);
+        //     runner = runner.next;
+        // }
+        // return listArray[k-1];
+    }
     //SList: Reverse
     //Reverse the node sequence. Given an SList object, the .head property should 
     //point to the previously-last node, and the rest of the nodes should follow 
@@ -144,7 +139,6 @@ class SList{
             runner = runner.next;   
         }
         return length;
-
     }
 }
 const list = new SList();
